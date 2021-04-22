@@ -9,22 +9,19 @@ import Phrase from './TextArea';
 
 storiesOf('Textarea', module)
   .add('Uneditable', () => { 
-
    return (
       <Phrase 
         multiline={true}
         numberOfLines={4}
-        placeholder= {'Question'}
-        placeholderTextColor={'#111827'}
         editable={false}
-        value={'Anita'}
+        value={'roa ambin’ny folo'}
       />
     )
-   })
+  })
    
-  .add('Editable', () => { 
+  .add('Editable', () => {
   function Parent({ children, ...props }) {
-    const [state, setState] = useState({value: '000'});
+    const [state, setState] = useState({value: ''});
     return <View>{children(state, setState)}</View>;
   }
 
@@ -34,8 +31,8 @@ storiesOf('Textarea', module)
           <Phrase 
             multiline={true}
             numberOfLines={4}
-            placeholder= {'Question'}
-            placeholderTextColor={'#111827'}
+            placeholder= {'Enter here'}
+            placeholderTextColor={'rgba(17, 24, 39, 0.5)'}
             editable={true}
             value={state.value}
             onChange={(text) => setState({ value: text })}

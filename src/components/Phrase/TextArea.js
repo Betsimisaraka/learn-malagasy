@@ -12,9 +12,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E5E5E5',
     borderRadius: 3,
+    marginTop: 15,
   },
-  textArea: {
-    alignSelf: 'center',
+  placeholder: {
+    fontFamily: 'Inter',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: 20,
+    lineHeight: 24,
+    textAlign: 'center',
+    color: '#111827',
   }
 })
 
@@ -22,7 +29,7 @@ export default function Phrase({placeholder, multiline, numberOfLines, placehold
   
   return (
     <SafeAreaView style={styles.textAreaContainer}>
-      <TextInput 
+      <TextInput style={styles.placeholder}
         placeholder={placeholder} 
         placeholderTextColor={placeholderTextColor}
         multiline={multiline} 
