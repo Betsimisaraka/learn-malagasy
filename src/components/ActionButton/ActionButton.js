@@ -10,24 +10,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 20,
         fontFamily: 'Inter',
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 16,
         lineHeight: 19,
-        textAlign: 'right',
+        marginTop: 20,
+    },
+    buttonText: {
+        marginRight: 10,
     },
     blueButtonText: {
-        marginRight: 10,
         color: '#06B6D4',
     },
     correctButtonText: {
-         marginRight: 10,
         color: '#06D440',
     },
     wrongButtonText: {
-         marginRight: 10,
         color: '#D4068E',
     },
 })
@@ -48,7 +47,7 @@ function ActionButton({ onPress, buttonText }) {
   return (
       <SafeAreaView>
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Text style={style}>{buttonText} </Text>
+            <Text style={[style, styles.buttonText]}>{buttonText} </Text>
             {buttonText === 'Learn' || buttonText === 'Pick' 
                 ? <Learn /> 
                 : buttonText === 'Correct' 
