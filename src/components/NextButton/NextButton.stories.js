@@ -10,21 +10,25 @@ storiesOf('NextButton', module)
   .add('next', () => (
     <NextButton
         buttonText='Next' 
+         disabled={false}
         onPress={action('next question')} 
         />
   ))
   .add('add', () => (
     <NextButton 
         buttonText='Add'
+        disabled={false}
         onPress={action('Add a question')} />
   ))
-  .add('correct', () => (
+  .add('reshuffle', () => (
     <NextButton 
-        buttonText={'Reshuffle'}
-        onPress={action('')} />
+        buttonText='Reshuffle'
+        disabled={false}
+        onPress={action('Try again')} />
   ))
   .add('Disable', () => (
     <NextButton 
         buttonText={'Add'}
+        disabled={true}
         onPress={action('You can not click')} />
   ));
