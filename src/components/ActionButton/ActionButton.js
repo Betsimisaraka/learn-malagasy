@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { Text, StyleSheet, Image, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+
+import Learn from '../../assets/learn-icon.svg';
+import Correct from '../../assets/correct-icon.svg';
+import Wrong from '../../assets/wrong-icon.svg';
 
 const styles = StyleSheet.create({
     container: {
@@ -29,31 +33,28 @@ const styles = StyleSheet.create({
 })
 
 function ActionButton({ onPress, buttonText }) {
-    let image;
     let style;
     
     if(buttonText === 'Learn') {
         style = styles.blueButtonText;
-        image = require('../../assets/learn-icon.png');
     } else if (buttonText === 'Pick') {
          style = styles.blueButtonText;
-         image = require('../../assets/learn-icon.png');
     } else if (buttonText === 'Correct') {
          style = styles.correctButtonText;
-         image = require('../../assets/correct-icon.png');
     } else if (buttonText === 'Wrong') {
          style = styles.wrongButtonText;
-         image = require('../../assets/wrong-icon.png');
     }
 
   return (
       <SafeAreaView>
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <Text style={style}>{buttonText} </Text>
-            <Image 
-                source={image}
-                resizeMode='contain'
-            />
+            {buttonText === 'Learn' || buttonText === 'Pick' 
+                ? <Learn /> 
+                : buttonText === 'Correct' 
+                ? <Correct /> 
+                : <Wrong />
+            }
         </TouchableOpacity>
       </SafeAreaView>
   ) 
