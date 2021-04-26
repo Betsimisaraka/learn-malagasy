@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontFamily: 'Inter',
     fontStyle: 'normal',
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontSize: 18,
     lineHeight: 22,
     color: '#111827',
