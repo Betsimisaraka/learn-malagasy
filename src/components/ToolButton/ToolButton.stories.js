@@ -1,8 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import ToolButton from './ToolButton';
+
 import Add from '../../assets/add.svg';
 import Seen from '../../assets/seen.svg';
 import Learnt from '../../assets/learnt.svg';

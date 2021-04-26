@@ -9,10 +9,11 @@ const styles = StyleSheet.create({
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
     }
 })
 
-export default function ToolButton({ onPress, children }) {
+function ToolButton({ onPress, children }) {
   return <TouchableOpacity style={styles.container} onPress={onPress}>{children}</TouchableOpacity>;
 }
+
+export default ToolButton;
