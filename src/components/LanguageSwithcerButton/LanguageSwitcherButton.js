@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 function LanguageSwitcherButton({ onPress, buttonText, title }) {
 
   return (
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <TouchableOpacity
             style={styles.container}
             onPress={onPress}
