@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontFamily: 'Inter',
     fontStyle: 'normal',
-    fontWeight: '600',
+    fontWeight: 'bold',
     fontSize: 18,
     lineHeight: 22,
     color: '#111827',
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 function SectionHeading({variants}) {
   return (
     <SafeAreaView>
-      <Text style={styles.textStyle}>{variants}:</Text>
+      <Text style={styles.textStyle}>{variants}</Text>
     </SafeAreaView>
   );
 }
