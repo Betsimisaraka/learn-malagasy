@@ -10,7 +10,7 @@ import Back from '../../assets/back.svg';
 import Nightmode from '../../assets/night-mode.svg';
 
 storiesOf('ToolButton', module)
-  .addDecorator((story) => <View>{story()}</View>)
+  .addDecorator((story) => <View style={{ marginTop: 20, alignItems: 'center' }}>{story()}</View>)
   .add('add', () => (
     <ToolButton onPress={() => alert('Add')}>
       <Add />

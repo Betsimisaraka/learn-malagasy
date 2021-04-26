@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -9,9 +9,10 @@ const styles = StyleSheet.create({
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'row',
     }
 })
 
 export default function ToolButton({ onPress, children }) {
-  return <TouchableHighlight style={styles.container} onPress={onPress}>{children}</TouchableHighlight>;
+  return <TouchableOpacity style={styles.container} onPress={onPress}>{children}</TouchableOpacity>;
 }
