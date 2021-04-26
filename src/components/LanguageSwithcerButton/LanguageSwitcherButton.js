@@ -34,7 +34,7 @@ function LanguageSwitcherButton({ onPress, buttonText, title }) {
             onPress={onPress}
         >
             <Text style={styles.switcherText}>{buttonText}</Text>
-              <SwitcherIcon />
+            <SwitcherIcon />
             <Text style={styles.switcherText}>{title}</Text>
         </TouchableOpacity>
       </SafeAreaView>
