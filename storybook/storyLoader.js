@@ -8,6 +8,7 @@ function loadStories() {
   require('../src/components/LanguageSwithcerButton/LanguageSwitcherButton.stories');
   require('../src/components/NextButton/NextButton.stories');
   require('../src/components/PhraseTextArea/PhraseTextArea.stories');
+  require('../src/components/ToolButton/ToolButton.stories');
   require('./stories/Button/Button.stories');
   require('./stories/Welcome/Welcome.stories');
 }
@@ -17,6 +18,7 @@ const stories = [
   '../src/components/LanguageSwithcerButton/LanguageSwitcherButton.stories',
   '../src/components/NextButton/NextButton.stories',
   '../src/components/PhraseTextArea/PhraseTextArea.stories',
+  '../src/components/ToolButton/ToolButton.stories',
   './stories/Button/Button.stories',
   './stories/Welcome/Welcome.stories',
 ];
