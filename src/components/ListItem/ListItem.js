@@ -3,9 +3,6 @@ import {Text, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import ActionButton from '../ActionButton/ActionButton';
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-  },
   textContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -23,7 +20,7 @@ const styles = StyleSheet.create({
 
 function ListItem({title, onPress, buttonText}) {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <TouchableOpacity style={styles.textContainer} onPress={onPress}>
         <Text style={styles.textStyle}>{title}</Text>
         <ActionButton buttonText={buttonText} />
