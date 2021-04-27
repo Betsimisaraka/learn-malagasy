@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, SafeAreaView} from 'react-native';
+import {Text, StyleSheet, View} from 'react-native';
 
 const styles = StyleSheet.create({
   textStyle: {
@@ -12,11 +12,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function SectionHeading({variants}) {
+function SectionHeading({title}) {
   return (
-    <SafeAreaView>
-      <Text style={styles.textStyle}>{variants}</Text>
-    </SafeAreaView>
+    <View>
+      <Text style={styles.textStyle}>{title}</Text>
+    </View>
   );
 }
 

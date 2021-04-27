@@ -8,17 +8,15 @@ storiesOf('SectionHeading', module)
   .addDecorator(story => (
     <View style={{marginTop: 20, marginLeft: 20}}>{story()}</View>
   ))
-  .add('select a category', () => (
-    <SectionHeading variants="Select a category:" />
-  ))
+  .add('select a category', () => <SectionHeading title="Select a category:" />)
   .add('the phrase in Malagasy', () => (
-    <SectionHeading variants="The phrase in Malagasy:" />
+    <SectionHeading title="The phrase in Malagasy:" />
   ))
   .add('the phrase in English', () => (
-    <SectionHeading variants="The phrase in English:" />
+    <SectionHeading title="The phrase in English:" />
   ))
-  .add('seen phrases', () => <SectionHeading variants="Seen phrases:" />)
-  .add('pick a solution', () => <SectionHeading variants="Pick a solution:" />)
-  .add('the phrase', () => <SectionHeading variants="The phrase:" />)
-  .add('learnt phrases', () => <SectionHeading variants="Learnt phrases:" />)
-  .add('category', () => <SectionHeading variants="Category:" />);
+  .add('seen phrases', () => <SectionHeading title="Seen phrases:" />)
+  .add('pick a solution', () => <SectionHeading title="Pick a solution:" />)
+  .add('the phrase', () => <SectionHeading title="The phrase:" />)
+  .add('learnt phrases', () => <SectionHeading title="Learnt phrases:" />)
+  .add('category', () => <SectionHeading title="Category:" />);
