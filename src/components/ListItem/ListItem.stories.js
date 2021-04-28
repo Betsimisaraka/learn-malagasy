@@ -19,4 +19,11 @@ storiesOf('ListItem', module)
       onPress={() => alert('Pick a new words')}
       buttonText="Pick"
     />
+  ))
+  .add('more text', () => (
+    <ListItem
+      title="An unncessessarly loooong cat more text that is wraping by itself I like its"
+      onPress={() => alert('Pick a new words')}
+      buttonText="Pick"
+    />
   ));

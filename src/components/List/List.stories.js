@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {storiesOf} from '@storybook/react-native';
 
-// const categoriesData = require('./categories.json');
 const categoriesData = require('../../data/categories.json');
 
 import List from './List';
