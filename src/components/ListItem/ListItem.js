@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: '#111827',
+    flexShrink: 1,
   },
 });
 
@@ -22,7 +23,9 @@ function ListItem({title, onPress, buttonText}) {
   return (
     <SafeAreaView>
       <TouchableOpacity style={styles.textContainer} onPress={onPress}>
-        <Text style={styles.textStyle}>{title}</Text>
+        <Text style={styles.textStyle} numberOfLines={1}>
+          {title}
+        </Text>
         <ActionButton buttonText={buttonText} />
       </TouchableOpacity>
     </SafeAreaView>
