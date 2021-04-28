@@ -13,8 +13,6 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     borderLeftWidth: 1,
     borderRightWidth: 1,
-    // borderRadius: 3,
-    // borderWidth: 1,
     borderColor: '#E5E5E5',
   },
   firstChild: {
@@ -69,7 +67,7 @@ function List({item, onPress, buttonText}) {
             style={
               index === 0
                 ? styles.firstChild
-                : index == item.length - 1
+                : index === item.length - 1
                 ? styles.lastChild
                 : styles.container
             }>
