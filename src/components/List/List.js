@@ -54,11 +54,17 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({item, onPress, buttonText}) {
+function List({item, onPress, buttonText, category}) {
+  let text;
+  if (item === category) {
+    text = 'Select a category';
+  } else {
+    text = 'Pick a solution';
+  }
   return (
     <SafeAreaView>
       <SectionList
-        sections={[{title: 'Select a category:', data: item}]}
+        sections={[{title: text, data: item}]}
         renderSectionHeader={({section}) => (
           <SectionHeading title={section.title} />
         )}
