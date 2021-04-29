@@ -57,9 +57,9 @@ const Separator = () => <View style={styles.separator} />;
 function List({item, onPress, buttonText, category}) {
   let text;
   if (item === category) {
-    text = 'Select a category';
+    text = 'Select a category:';
   } else {
-    text = 'Pick a solution';
+    text = 'Pick a solution:';
   }
   return (
     <SafeAreaView>
