@@ -4,7 +4,7 @@ import {SafeAreaView, KeyboardAvoidingView} from 'react-native';
 import List from '../components/List/List';
 import useCategoryList from '../util/useCategory';
 
-const CategoryList = () => {
+const CategoryList = ({navigation}) => {
   const {category} = useCategoryList();
 
   return (
@@ -12,7 +12,7 @@ const CategoryList = () => {
       <KeyboardAvoidingView bahavior="padding">
         <List
           item={category}
-          onPress={() => alert('Learn more words here')}
+          onPress={() => navigation.navigate('Learn')}
           buttonText="Learn"
           category={category}
         />

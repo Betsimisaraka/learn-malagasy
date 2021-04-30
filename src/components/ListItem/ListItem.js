@@ -26,7 +26,7 @@ function ListItem({title, onPress, buttonText}) {
         <Text style={styles.textStyle} numberOfLines={1}>
           {title}
         </Text>
-        <ActionButton buttonText={buttonText} />
+        <ActionButton buttonText={buttonText} onPress={onPress} />
       </TouchableOpacity>
     </SafeAreaView>
   );

@@ -7,12 +7,11 @@ import LanguageSwitcherButton from '../components/LanguageSwithcerButton/Languag
 import Add from '../assets/add.svg';
 import Seen from '../assets/seen.svg';
 import Learnt from '../assets/learnt.svg';
-import Back from '../assets/back.svg';
 import Nightmode from '../assets/night-mode.svg';
+import useCategoryList from '../util/useCategory';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     marginTop: 35,
     paddingBottom: 56,
@@ -21,24 +20,30 @@ const styles = StyleSheet.create({
   },
 });
 
-const Menu = () => {
+const HomeButton = () => {
+  const {lang} = useCategoryList();
+
   return (
     <SafeAreaView style={styles.container}>
-      <ToolButton>
+      <ToolButton onPress={() => alert('add new item')}>
         <Add />
       </ToolButton>
-      <LanguageSwitcherButton />
-      <ToolButton>
+      <LanguageSwitcherButton
+        title={lang.ma}
+        buttonText={lang.en}
+        onPress={() => alert('Switch language')}
+      />
+      <ToolButton onPress={() => alert('seen phrases')}>
         <Seen />
       </ToolButton>
-      <ToolButton>
+      <ToolButton onPress={() => alert('learnt phrases')}>
         <Learnt />
       </ToolButton>
-      <ToolButton>
+      <ToolButton onPress={() => alert('night mode')}>
         <Nightmode />
       </ToolButton>
     </SafeAreaView>
   );
 };
 
-export default Menu;
+export default HomeButton;
