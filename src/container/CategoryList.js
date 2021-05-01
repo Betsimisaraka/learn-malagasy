@@ -12,7 +12,7 @@ const CategoryList = ({navigation}) => {
       <KeyboardAvoidingView bahavior="padding">
         <List
           item={category}
-          onPress={() => navigation.navigate('Learn')}
+          navigation={navigation}
           buttonText="Learn"
           category={category}
         />

@@ -3,11 +3,13 @@ import {SafeAreaView, Text} from 'react-native';
 
 import LearnButton from '../container/LearnButton';
 
-const Learn = ({navigation}) => {
+const Learn = ({navigation, route}) => {
+  const {item} = route.params;
+
   return (
     <SafeAreaView>
       <LearnButton navigation={navigation} />
-      <Text>Hello learn screen</Text>
+      <Text>Category: {item.name.en}</Text>
     </SafeAreaView>
   );
 };
