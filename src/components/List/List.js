@@ -77,11 +77,19 @@ function List({item, navigation, buttonText, category}) {
                 ? styles.lastChild
                 : styles.container
             }>
-            <ListItem
-              title={item.name.en}
-              onPress={() => navigation.navigate('Learn', {item})}
-              buttonText={buttonText}
-            />
+            {category ? (
+              <ListItem
+                title={item.name.en}
+                onPress={() => navigation.navigate('Learn', {item})}
+                buttonText={buttonText}
+              />
+            ) : (
+              <ListItem
+                title={item.name.en}
+                onPress={() => alert('Pick answer')}
+                buttonText={buttonText}
+              />
+            )}
           </View>
         )}
         keyExtractor={item => item.id}

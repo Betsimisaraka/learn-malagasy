@@ -4,6 +4,7 @@ const categoriesData = require('../data/categories.json');
 
 function useCategoryList() {
   const [category, setCategory] = useState([]);
+  const [phrase, setPhrase] = useState([]);
 
   const lang = {
     en: 'EN',
@@ -21,6 +22,8 @@ function useCategoryList() {
   return {
     category,
     lang,
+    phrase,
+    setPhrase,
   };
 }
 
