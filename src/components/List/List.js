@@ -54,12 +54,12 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({item, onPress, buttonText, category}) {
+function List({item, navigation, buttonText, category}) {
   let text;
   if (item === category) {
-    text = 'Select a category';
+    text = 'Select a category:';
   } else {
-    text = 'Pick a solution';
+    text = 'Pick a solution:';
   }
   return (
     <SafeAreaView>
@@ -79,7 +79,7 @@ function List({item, onPress, buttonText, category}) {
             }>
             <ListItem
               title={item.name.en}
-              onPress={onPress}
+              onPress={() => navigation.navigate('Learn', {item})}
               buttonText={buttonText}
             />
           </View>
