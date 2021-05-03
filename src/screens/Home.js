@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 
 import HomeButton from '../container/HomeButton';
@@ -13,13 +13,6 @@ const styles = StyleSheet.create({
 });
 
 const Home = ({navigation}) => {
-  // useEffect(() => {
-  //   const unsubscribe = navigation.addListener('focus', () => {
-  //     console.log('Refreshed!');
-  //   });
-  //   return unsubscribe;
-  // }, [navigation]);
-
   return (
     <SafeAreaView style={styles.container}>
       <HomeButton />

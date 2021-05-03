@@ -77,7 +77,7 @@ function List({item, navigation, buttonText, category, onPress}) {
                 ? styles.lastChild
                 : styles.container
             }>
-            {category ? (
+            {category === category ? (
               <ListItem
                 title={item.name.en}
                 onPress={() => navigation.navigate('Learn', {item})}
@@ -85,7 +85,7 @@ function List({item, navigation, buttonText, category, onPress}) {
               />
             ) : (
               <ListItem
-                title={item && item.name.en}
+                title={item.name.en}
                 onPress={onPress}
                 buttonText={buttonText}
               />

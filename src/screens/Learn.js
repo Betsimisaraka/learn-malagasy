@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView, Text, View, StyleSheet} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
 import LearnButton from '../container/LearnButton';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import PhraseTextArea from '../components/PhraseTextArea/PhraseTextArea';
-import useCategoryList from '../util/useCategory';
 import List from '../components/List/List';
-// import List from '../components/List/List';
+import {getPhrase} from '../redux/Redux';
 
 const phrasesData = require('../data/phrases.json');
 
@@ -32,20 +32,17 @@ const styles = StyleSheet.create({
 });
 
 const Learn = ({navigation, route}) => {
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [question, setQuestion] = useState('');
-  const [answers, setAnswers] = useState([]);
-  const [correctAnswer, setCorrectAnswer] = useState('');
-  const {phrase, setPhrase} = useCategoryList();
+  const phrase = useSelector(state => state.phrase);
+  const dispatch = useDispatch();
+
   const {item} = route.params;
 
-  function getPhrase() {
+  function getPhraseData() {
     const getPhrases = phrasesData.phrases;
     getRandomeAnswer(getPhrases);
   }
 
   function getRandomeAnswer(phrase) {
-    // setPhrase(phrase);
     const random =
       item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
     const random1 =
@@ -54,12 +51,11 @@ const Learn = ({navigation, route}) => {
       item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
     const random3 =
       item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
-    const findAnswer = phrase.find(phrase => phrase.id === random);
-    const findRandom1 = phrase.find(phrase => phrase.id === random1);
-    const findRandom2 = phrase.find(phrase => phrase.id === random2);
-    const findRandom3 = phrase.find(phrase => phrase.id === random3);
+    const findAnswer = phrase && phrase.find(phrase => phrase.id === random);
+    const findRandom1 = phrase && phrase.find(phrase => phrase.id === random1);
+    const findRandom2 = phrase && phrase.find(phrase => phrase.id === random2);
+    const findRandom3 = phrase && phrase.find(phrase => phrase.id === random3);
     const pickAnswers = [findAnswer, findRandom1, findRandom2, findRandom3];
-    console.log(pickAnswers);
 
     const sortedAnswer = pickAnswers.sort(() => {
       return 0.5 - Math.random();
@@ -68,19 +64,17 @@ const Learn = ({navigation, route}) => {
     const obj = {
       question: findAnswer.name.mg,
       correctAnswer: findAnswer.name.en,
+      answers: sortedAnswer,
     };
 
-    setPhrase(obj);
-    // setQuestion(findAnswer.name.mg);
-    // setCorrectAnswer(findAnswer.name.en);
-    setAnswers(sortedAnswer);
+    dispatch(getPhrase(obj));
   }
 
   useEffect(() => {
-    getPhrase();
+    getPhraseData();
   }, []);
 
-  // console.log(phrase);
+  console.log(phrase && phrase.answers);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -92,10 +86,10 @@ const Learn = ({navigation, route}) => {
       <SectionHeading title="The phrase:" />
       <PhraseTextArea editable={false} phrase={phrase.question} />
       <List
-        item={answers}
+        item={phrase && phrase.answers}
         // navigation={navigation}
         buttonText="Pick"
-        category={answers}
+        category={phrase && phrase.answers}
       />
     </SafeAreaView>
   );
