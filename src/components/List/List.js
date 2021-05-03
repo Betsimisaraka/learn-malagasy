@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({item, navigation, buttonText, category}) {
+function List({item, navigation, buttonText, category, onPress}) {
   let text;
   if (item === category) {
     text = 'Select a category:';
@@ -85,8 +85,8 @@ function List({item, navigation, buttonText, category}) {
               />
             ) : (
               <ListItem
-                title={item.name.en}
-                onPress={() => alert('Pick answer')}
+                title={item && item.name.en}
+                onPress={onPress}
                 buttonText={buttonText}
               />
             )}

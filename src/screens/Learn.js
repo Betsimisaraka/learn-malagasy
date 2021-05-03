@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
 
 const Learn = ({navigation, route}) => {
   const [isCorrect, setIsCorrect] = useState(false);
+  const [question, setQuestion] = useState('');
+  const [answers, setAnswers] = useState([]);
+  const [correctAnswer, setCorrectAnswer] = useState('');
   const {phrase, setPhrase} = useCategoryList();
   const {item} = route.params;
 
@@ -42,6 +45,7 @@ const Learn = ({navigation, route}) => {
   }
 
   function getRandomeAnswer(phrase) {
+    // setPhrase(phrase);
     const random =
       item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
     const random1 =
@@ -55,26 +59,28 @@ const Learn = ({navigation, route}) => {
     const findRandom2 = phrase.find(phrase => phrase.id === random2);
     const findRandom3 = phrase.find(phrase => phrase.id === random3);
     const pickAnswers = [findAnswer, findRandom1, findRandom2, findRandom3];
+    console.log(pickAnswers);
 
     const sortedAnswer = pickAnswers.sort(() => {
       return 0.5 - Math.random();
     });
 
-    const pickPhrases = {
+    const obj = {
       question: findAnswer.name.mg,
-      answers: sortedAnswer,
       correctAnswer: findAnswer.name.en,
-      userAnswer: '',
     };
-    setPhrase(pickPhrases);
+
+    setPhrase(obj);
+    // setQuestion(findAnswer.name.mg);
+    // setCorrectAnswer(findAnswer.name.en);
+    setAnswers(sortedAnswer);
   }
 
   useEffect(() => {
     getPhrase();
   }, []);
 
-  // const displayAnswers = phrase.answers;
-  console.log(phrase);
+  // console.log(phrase);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -86,10 +92,10 @@ const Learn = ({navigation, route}) => {
       <SectionHeading title="The phrase:" />
       <PhraseTextArea editable={false} phrase={phrase.question} />
       <List
-        item={phrase.answers}
+        item={answers}
         // navigation={navigation}
         buttonText="Pick"
-        category={phrase.answers}
+        category={answers}
       />
     </SafeAreaView>
   );
