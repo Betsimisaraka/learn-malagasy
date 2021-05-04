@@ -23,12 +23,7 @@ const CategoryList = ({navigation}) => {
   return (
     <SafeAreaView>
       <KeyboardAvoidingView bahavior="padding">
-        <List
-          item={category}
-          navigation={navigation}
-          buttonText="Learn"
-          category={category}
-        />
+        <List items={category} navigation={navigation} buttonText="Learn" />
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

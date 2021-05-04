@@ -7,6 +7,9 @@ const initialState = {
     ma: 'Ma',
   },
   phrase: [],
+  seenPhrases: [],
+  answers: [],
+  countSeenPhrase: 0,
 };
 
 export const getCategoryList = categoryList => ({
@@ -21,6 +24,20 @@ export const getPhrase = phrase => ({
   payload: phrase,
 });
 
+export const getSeenPhrases = seenPhrase => ({
+  type: 'GET_SEEN_PHRASES',
+  payload: seenPhrase,
+});
+
+export const countSeenPhrases = () => ({
+  type: 'COUNT_SEEN_PHRASES',
+});
+
+export const getAnswers = answer => ({
+  type: 'GET_ANSWERS',
+  payload: answer,
+});
+
 const categoryListReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_CATEGORY_LIST':
@@ -29,6 +46,18 @@ const categoryListReducer = (state = initialState, action) => {
       return {...state, lang: state};
     case 'GET_PHRASE':
       return {...state, phrase: action.payload};
+    case 'GET_ANSWERS':
+      return {...state, answers: action.payload};
+    case 'GET_SEEN_PHRASES':
+      return {
+        ...state,
+        seenPhrases: action.payload,
+      };
+    case 'COUNT_SEEN_PHRASES':
+      return {
+        ...state,
+        countSeenPhrases: state.seenPhrases.map(seen => seen.length),
+      };
     default:
       return state;
   }

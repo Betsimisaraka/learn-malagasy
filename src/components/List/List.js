@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, SafeAreaView, SectionList, View} from 'react-native';
+import {useSelector} from 'react-redux';
 
 import SectionHeading from '../SectionHeading/SectionHeading';
 import ListItem from '../ListItem/ListItem';
@@ -54,9 +55,11 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({item, navigation, buttonText, category, onPress}) {
+function List({items, navigation, buttonText}) {
+  const category = useSelector(state => state.categories);
+
   let text;
-  if (item === category) {
+  if (items === category) {
     text = 'Select a category:';
   } else {
     text = 'Pick a solution:';
@@ -64,7 +67,7 @@ function List({item, navigation, buttonText, category, onPress}) {
   return (
     <SafeAreaView>
       <SectionList
-        sections={[{title: text, data: item}]}
+        sections={[{title: text, data: items}]}
         renderSectionHeader={({section}) => (
           <SectionHeading title={section.title} />
         )}
@@ -77,7 +80,7 @@ function List({item, navigation, buttonText, category, onPress}) {
                 ? styles.lastChild
                 : styles.container
             }>
-            {category === category ? (
+            {items === category ? (
               <ListItem
                 title={item.name.en}
                 onPress={() => navigation.navigate('Learn', {item})}
@@ -86,7 +89,7 @@ function List({item, navigation, buttonText, category, onPress}) {
             ) : (
               <ListItem
                 title={item.name.en}
-                onPress={onPress}
+                onPress={() => alert('Pick a solution')}
                 buttonText={buttonText}
               />
             )}
