@@ -29,8 +29,9 @@ export const getSeenPhrases = seenPhrase => ({
   payload: seenPhrase,
 });
 
-export const countSeenPhrases = () => ({
+export const getCountSeenPhrases = count => ({
   type: 'COUNT_SEEN_PHRASES',
+  payload: count,
 });
 
 export const getAnswers = answer => ({
@@ -56,7 +57,7 @@ const categoryListReducer = (state = initialState, action) => {
     case 'COUNT_SEEN_PHRASES':
       return {
         ...state,
-        countSeenPhrases: state.seenPhrases.map(seen => seen.length),
+        countSeenPhrases: action.payload,
       };
     default:
       return state;

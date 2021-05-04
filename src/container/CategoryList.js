@@ -13,17 +13,14 @@ const CategoryList = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    function getCategory() {
-      const categories = categoriesData.categories;
-      dispatch(getCategoryList(categories));
-    }
-    getCategory();
+    const categories = categoriesData.categories;
+    dispatch(getCategoryList(categories));
   }, []);
 
   return (
     <SafeAreaView>
       <KeyboardAvoidingView bahavior="padding">
-        <List items={category} navigation={navigation} buttonText="Learn" />
+        <List items={category} navigation={navigation} />
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

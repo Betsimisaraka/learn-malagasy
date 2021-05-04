@@ -6,7 +6,12 @@ import LearnButton from '../container/LearnButton';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import PhraseTextArea from '../components/PhraseTextArea/PhraseTextArea';
 import List from '../components/List/List';
-import {getPhrase, getSeenPhrases, getAnswers} from '../redux/Redux';
+import {
+  getPhrase,
+  getSeenPhrases,
+  getAnswers,
+  getCountSeenPhrases,
+} from '../redux/Redux';
 
 const phrasesData = require('../data/phrases.json');
 
@@ -42,18 +47,16 @@ const Learn = ({navigation, route}) => {
 
   function getPhraseData() {
     const getPhrases = phrasesData.phrases;
-    getRandomeAnswer(getPhrases);
+    const getItem = item.phrasesIds;
+    getRandomeAnswer(getPhrases, getItem);
   }
 
-  function getRandomeAnswer(phrase) {
-    const random =
-      item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
-    const random1 =
-      item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
-    const random2 =
-      item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
-    const random3 =
-      item.phrasesIds[Math.floor(Math.random() * item.phrasesIds.length)];
+  function getRandomeAnswer(phrase, item) {
+    const random = item[Math.floor(Math.random() * item.length)];
+    const random1 = item[Math.floor(Math.random() * item.length)];
+    const random2 = item[Math.floor(Math.random() * item.length)];
+    const random3 = item[Math.floor(Math.random() * item.length)];
+
     const findAnswer = phrase.find(phrase => phrase.id === random);
     const findRandom1 = phrase.find(phrase => phrase.id === random1);
     const findRandom2 = phrase.find(phrase => phrase.id === random2);
@@ -63,8 +66,6 @@ const Learn = ({navigation, route}) => {
     const sortedAnswer = pickAnswers.sort(() => {
       return 0.5 - Math.random();
     });
-
-    console.log(sortedAnswer);
 
     const obj = {
       question: findAnswer.name.mg,
@@ -84,7 +85,11 @@ const Learn = ({navigation, route}) => {
     dispatch(getSeenPhrases(questionPhrase));
   }, []);
 
-  console.log(seenPhrases);
+  useEffect(() => {
+    const numberOfPhrases = seenPhrases.length;
+    dispatch(getCountSeenPhrases(numberOfPhrases));
+  }, []);
+
   console.log(countSeenPhrases);
 
   return (
@@ -96,7 +101,7 @@ const Learn = ({navigation, route}) => {
       </View>
       <SectionHeading title="The phrase:" />
       <PhraseTextArea editable={false} phrase={phrase.question} />
-      <List items={answers} buttonText="Pick" category={answers} />
+      <List items={answers} />
     </SafeAreaView>
   );
 };

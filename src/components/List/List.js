@@ -16,33 +16,33 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderColor: '#E5E5E5',
   },
-  firstChild: {
-    backgroundColor: '#FFFFFF',
-    borderTopWidth: 1,
-    paddingBottom: 17,
-    paddingTop: 17,
-    paddingLeft: 16,
-    paddingRight: 20,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopLeftRadius: 3,
-    borderTopRightRadius: 3,
-    borderColor: '#E5E5E5',
-    marginTop: 15,
-  },
-  lastChild: {
-    backgroundColor: '#FFFFFF',
-    paddingBottom: 17,
-    paddingTop: 17,
-    paddingLeft: 16,
-    paddingRight: 20,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderBottomLeftRadius: 3,
-    borderBottomRightRadius: 3,
-    borderColor: '#E5E5E5',
-    borderBottomWidth: 1,
-  },
+  // firstChild: {
+  //   backgroundColor: '#FFFFFF',
+  //   borderTopWidth: 1,
+  //   paddingBottom: 17,
+  //   paddingTop: 17,
+  //   paddingLeft: 16,
+  //   paddingRight: 20,
+  //   borderLeftWidth: 1,
+  //   borderRightWidth: 1,
+  //   borderTopLeftRadius: 3,
+  //   borderTopRightRadius: 3,
+  //   borderColor: '#E5E5E5',
+  //   marginTop: 15,
+  // },
+  // lastChild: {
+  //   backgroundColor: '#FFFFFF',
+  //   paddingBottom: 17,
+  //   paddingTop: 17,
+  //   paddingLeft: 16,
+  //   paddingRight: 20,
+  //   borderLeftWidth: 1,
+  //   borderRightWidth: 1,
+  //   borderBottomLeftRadius: 3,
+  //   borderBottomRightRadius: 3,
+  //   borderColor: '#E5E5E5',
+  //   borderBottomWidth: 1,
+  // },
   sectionHeading: {
     paddingBottom: 15,
   },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({items, navigation, buttonText}) {
+function List({items, navigation}) {
   const category = useSelector(state => state.categories);
 
   let text;
@@ -72,25 +72,18 @@ function List({items, navigation, buttonText}) {
           <SectionHeading title={section.title} />
         )}
         renderItem={({item, index}) => (
-          <View
-            style={
-              index === 0
-                ? styles.firstChild
-                : index === item.length - 1
-                ? styles.lastChild
-                : styles.container
-            }>
+          <View style={styles.container}>
             {items === category ? (
               <ListItem
                 title={item.name.en}
                 onPress={() => navigation.navigate('Learn', {item})}
-                buttonText={buttonText}
+                buttonText="Learn"
               />
             ) : (
               <ListItem
                 title={item.name.en}
                 onPress={() => alert('Pick a solution')}
-                buttonText={buttonText}
+                buttonText="Pick"
               />
             )}
           </View>
