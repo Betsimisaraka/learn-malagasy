@@ -16,33 +16,6 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderColor: '#E5E5E5',
   },
-  // firstChild: {
-  //   backgroundColor: '#FFFFFF',
-  //   borderTopWidth: 1,
-  //   paddingBottom: 17,
-  //   paddingTop: 17,
-  //   paddingLeft: 16,
-  //   paddingRight: 20,
-  //   borderLeftWidth: 1,
-  //   borderRightWidth: 1,
-  //   borderTopLeftRadius: 3,
-  //   borderTopRightRadius: 3,
-  //   borderColor: '#E5E5E5',
-  //   marginTop: 15,
-  // },
-  // lastChild: {
-  //   backgroundColor: '#FFFFFF',
-  //   paddingBottom: 17,
-  //   paddingTop: 17,
-  //   paddingLeft: 16,
-  //   paddingRight: 20,
-  //   borderLeftWidth: 1,
-  //   borderRightWidth: 1,
-  //   borderBottomLeftRadius: 3,
-  //   borderBottomRightRadius: 3,
-  //   borderColor: '#E5E5E5',
-  //   borderBottomWidth: 1,
-  // },
   sectionHeading: {
     paddingBottom: 15,
   },
@@ -57,11 +30,12 @@ const Separator = () => <View style={styles.separator} />;
 
 function List({items, navigation}) {
   const category = useSelector(state => state.categories);
+  const answers = useSelector(state => state.answers);
 
   let text;
   if (items === category) {
     text = 'Select a category:';
-  } else {
+  } else if (items === answers) {
     text = 'Pick a solution:';
   }
   return (
@@ -79,13 +53,13 @@ function List({items, navigation}) {
                 onPress={() => navigation.navigate('Learn', {item})}
                 buttonText="Learn"
               />
-            ) : (
+            ) : items === answers ? (
               <ListItem
                 title={item.name.en}
                 onPress={() => alert('Pick a solution')}
                 buttonText="Pick"
               />
-            )}
+            ) : null}
           </View>
         )}
         keyExtractor={item => item.id}

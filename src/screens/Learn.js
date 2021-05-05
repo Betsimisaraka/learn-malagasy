@@ -52,16 +52,20 @@ const Learn = ({navigation, route}) => {
   }
 
   function getRandomeAnswer(phrase, item) {
+    console.log(item);
+
     const random = item[Math.floor(Math.random() * item.length)];
     const random1 = item[Math.floor(Math.random() * item.length)];
     const random2 = item[Math.floor(Math.random() * item.length)];
     const random3 = item[Math.floor(Math.random() * item.length)];
+    console.log([random, random1, random2, random3]);
 
     const findAnswer = phrase.find(phrase => phrase.id === random);
     const findRandom1 = phrase.find(phrase => phrase.id === random1);
     const findRandom2 = phrase.find(phrase => phrase.id === random2);
     const findRandom3 = phrase.find(phrase => phrase.id === random3);
     const pickAnswers = [findAnswer, findRandom1, findRandom2, findRandom3];
+    console.log(pickAnswers);
 
     const sortedAnswer = pickAnswers.sort(() => {
       return 0.5 - Math.random();
@@ -71,6 +75,8 @@ const Learn = ({navigation, route}) => {
       question: findAnswer.name.mg,
       correctAnswer: findAnswer.name.en,
     };
+
+    console.log(obj);
 
     dispatch(getPhrase(obj));
     dispatch(getAnswers(sortedAnswer));
@@ -90,8 +96,6 @@ const Learn = ({navigation, route}) => {
     dispatch(getCountSeenPhrases(numberOfPhrases));
   }, []);
 
-  console.log(countSeenPhrases);
-
   return (
     <SafeAreaView style={styles.container}>
       <LearnButton navigation={navigation} />
@@ -101,7 +105,7 @@ const Learn = ({navigation, route}) => {
       </View>
       <SectionHeading title="The phrase:" />
       <PhraseTextArea editable={false} phrase={phrase.question} />
-      <List items={answers} />
+      <List items={answers && answers} />
     </SafeAreaView>
   );
 };
