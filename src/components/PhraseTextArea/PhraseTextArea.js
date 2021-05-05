@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: '#E5E5E5',
     borderWidth: 1,
+    marginBottom: 37,
   },
   input: {
     color: '#111827',

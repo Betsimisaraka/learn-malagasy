@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
 
 import ToolButton from '../components/ToolButton/ToolButton';
 import LanguageSwitcherButton from '../components/LanguageSwithcerButton/LanguageSwitcherButton';
@@ -8,7 +9,6 @@ import Add from '../assets/add.svg';
 import Seen from '../assets/seen.svg';
 import Learnt from '../assets/learnt.svg';
 import Nightmode from '../assets/night-mode.svg';
-import useCategoryList from '../util/useCategory';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 });
 
 const HomeButton = () => {
-  const {lang} = useCategoryList();
+  const lang = useSelector(state => state.lang);
 
   return (
     <SafeAreaView style={styles.container}>

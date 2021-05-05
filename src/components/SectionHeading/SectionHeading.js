@@ -5,10 +5,11 @@ const styles = StyleSheet.create({
   textStyle: {
     fontFamily: 'Inter',
     fontStyle: 'normal',
-    fontWeight: '600',
+    fontWeight: '700',
     fontSize: 18,
     lineHeight: 22,
     color: '#111827',
+    marginBottom: 15,
   },
 });
 
