@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, SafeAreaView, SectionList, View} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+
+import {setIsShow} from '../../redux/Redux';
 
 import SectionHeading from '../SectionHeading/SectionHeading';
 import ListItem from '../ListItem/ListItem';
@@ -28,9 +30,14 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({items, navigation}) {
+function List({items, navigation, onPress}) {
   const category = useSelector(state => state.categories);
   const answers = useSelector(state => state.answers);
+  const isShow = useSelector(state => state.isShow);
+  const isCorrect = useSelector(state => state.isCorrect);
+  const phrase = useSelector(state => state.phrase);
+
+  const dispatch = useDispatch();
 
   let text;
   if (items === category) {
@@ -38,6 +45,15 @@ function List({items, navigation}) {
   } else if (items === answers) {
     text = 'Pick a solution:';
   }
+
+  function onClick() {
+    let text;
+    if (phrase.correctAnswer !== isCorrect) {
+      text = 'correct';
+    }
+    dispatch(setIsShow(true));
+  }
+
   return (
     <SafeAreaView>
       <SectionList
@@ -56,7 +72,7 @@ function List({items, navigation}) {
             ) : items === answers ? (
               <ListItem
                 title={item.name.en}
-                onPress={() => alert('Pick a solution')}
+                onPress={() => onClick()}
                 buttonText="Pick"
               />
             ) : null}

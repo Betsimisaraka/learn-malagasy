@@ -10,6 +10,8 @@ const initialState = {
   seenPhrases: [],
   answers: [],
   countSeenPhrase: 0,
+  isCorrect: false,
+  isShow: false,
 };
 
 export const getCategoryList = categoryList => ({
@@ -39,6 +41,16 @@ export const getAnswers = answer => ({
   payload: answer,
 });
 
+export const setIsCorret = boolean => ({
+  type: 'SET_IS_CORRECT',
+  payload: boolean,
+});
+
+export const setIsShow = boolean => ({
+  type: 'SET_IS_SHOW',
+  payload: boolean,
+});
+
 const categoryListReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_CATEGORY_LIST':
@@ -59,6 +71,10 @@ const categoryListReducer = (state = initialState, action) => {
         ...state,
         countSeenPhrases: action.payload,
       };
+    case 'SET_IS_SHOW':
+      return {...state, isShow: action.payload};
+    case 'SET_IS_CORRECT':
+      return {...state, isCorrect: action.payload};
     default:
       return state;
   }

@@ -11,7 +11,9 @@ import {
   getSeenPhrases,
   getAnswers,
   getCountSeenPhrases,
+  setIsShow,
 } from '../redux/Redux';
+import NextButton from '../components/NextButton/NextButton';
 
 const phrasesData = require('../data/phrases.json');
 
@@ -41,6 +43,8 @@ const Learn = ({navigation, route}) => {
   const seenPhrases = useSelector(state => state.seenPhrases);
   const answers = useSelector(state => state.answers);
   const countSeenPhrases = useSelector(state => state.countSeenPhrases);
+  const isShow = useSelector(state => state.isShow);
+  const isCorrect = useSelector(state => state.isCorrect);
   const dispatch = useDispatch();
 
   const {item} = route.params;
@@ -105,7 +109,13 @@ const Learn = ({navigation, route}) => {
       </View>
       <SectionHeading title="The phrase:" />
       <PhraseTextArea editable={false} phrase={phrase.question} />
-      <List items={answers && answers} />
+      <List items={answers && answers} navigation={navigation} />
+      {isShow && (
+        <NextButton
+          buttonText="Next"
+          onPress={() => alert('Go to next question')}
+        />
+      )}
     </SafeAreaView>
   );
 };
