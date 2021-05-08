@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
   },
 });
 
-function ListItem({title, onPress, buttonText}) {
+function ListItem({title, onPress, buttonText, ref}) {
   return (
     <SafeAreaView>
       <TouchableOpacity style={styles.textContainer} onPress={onPress}>
         <Text style={styles.textStyle} numberOfLines={1}>
           {title}
         </Text>
-        <ActionButton buttonText={buttonText} onPress={onPress} />
+        <ActionButton buttonText={buttonText} onPress={onPress} ref={ref} />
       </TouchableOpacity>
     </SafeAreaView>
   );
