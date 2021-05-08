@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, SafeAreaView, SectionList, View} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {setIsShow} from '../../redux/Redux';
+import {
+  setIsShow,
+  setIsCorret,
+  getCountLearntPhrases,
+} from '../../redux/Actions';
 
 import SectionHeading from '../SectionHeading/SectionHeading';
 import ListItem from '../ListItem/ListItem';
@@ -33,10 +37,9 @@ const Separator = () => <View style={styles.separator} />;
 function List({items, navigation, onPress}) {
   const category = useSelector(state => state.categories);
   const answers = useSelector(state => state.answers);
-  const isShow = useSelector(state => state.isShow);
   const isCorrect = useSelector(state => state.isCorrect);
   const phrase = useSelector(state => state.phrase);
-
+  const learntPhrases = useSelector(state => state.learntPhrases);
   const dispatch = useDispatch();
 
   let text;
@@ -47,11 +50,19 @@ function List({items, navigation, onPress}) {
   }
 
   function onClick() {
-    let text;
-    if (phrase.correctAnswer !== isCorrect) {
-      text = 'correct';
+    const findCorrectAnswer = answers.find(
+      answer => answer.id === phrase.correctAnswer.id,
+    );
+    if (findCorrectAnswer === true) {
+      dispatch(setIsCorret(true));
+      learntPhrases.push(findCorrectAnswer);
+      const countPhras = learntPhrases.length;
+      dispatch(getCountLearntPhrases(countPhras));
+    } else if (!findCorrectAnswer) {
+      dispatch(setIsCorret(false));
+    } else {
+      dispatch(setIsCorret(false));
     }
-    dispatch(setIsShow(true));
   }
 
   return (
@@ -72,8 +83,19 @@ function List({items, navigation, onPress}) {
             ) : items === answers ? (
               <ListItem
                 title={item.name.en}
-                onPress={() => onClick()}
-                buttonText="Pick"
+                onPress={() => {
+                  onClick();
+                  dispatch(setIsShow(true));
+                }}
+                buttonText={
+                  !isCorrect
+                    ? 'Pick'
+                    : isCorrect
+                    ? 'Correct'
+                    : !isCorrect
+                    ? 'Wrong'
+                    : 'Pick'
+                }
               />
             ) : null}
           </View>

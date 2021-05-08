@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function ActionButton({onPress, buttonText}) {
+function ActionButton({onPress, buttonText, ref}) {
   let style;
   if (buttonText === 'Learn') {
     style = styles.blueButtonText;
@@ -44,7 +44,7 @@ function ActionButton({onPress, buttonText}) {
 
   return (
     <SafeAreaView>
-      <TouchableOpacity style={styles.container} onPress={onPress}>
+      <TouchableOpacity style={styles.container} onPress={onPress} ref={ref}>
         <Text style={[style, styles.buttonText]}>{buttonText} </Text>
         {buttonText === 'Learn' || buttonText === 'Pick' ? (
           <Learn />

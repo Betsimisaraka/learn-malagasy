@@ -70,7 +70,7 @@ function NextButton({onPress, buttonText, disabled}) {
       <TouchableOpacity
         style={[containerStyle, styles.container]}
         disabled={disabled}
-        onPress={() => alert('Next question')}>
+        onPress={onPress}>
         <Text style={[textStyle, styles.buttonText]}>{buttonText} </Text>
       </TouchableOpacity>
     </SafeAreaView>

@@ -1,12 +1,13 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import ToolButton from '../components/ToolButton/ToolButton';
 import LanguageSwitcherButton from '../components/LanguageSwithcerButton/LanguageSwitcherButton';
 
 import Back from '../assets/back.svg';
 import Nightmode from '../assets/night-mode.svg';
+import {setIsCorret, setIsShow} from '../redux/Actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,10 +22,16 @@ const styles = StyleSheet.create({
 
 const LearnButton = ({navigation}) => {
   const lang = useSelector(state => state.lang);
+  const dispatch = useDispatch();
 
   return (
     <SafeAreaView style={styles.container}>
-      <ToolButton onPress={() => navigation.navigate('Home')}>
+      <ToolButton
+        onPress={() => {
+          navigation.navigate('Home');
+          dispatch(setIsShow(false));
+          dispatch(setIsCorret(false));
+        }}>
         <Back />
       </ToolButton>
       <ToolButton onPress={() => alert('night mode')}>

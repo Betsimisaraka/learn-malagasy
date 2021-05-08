@@ -3,7 +3,7 @@ import {SafeAreaView, KeyboardAvoidingView} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
 import List from '../components/List/List';
-import {getCategoryList} from '../redux/Redux';
+import {getCategoryList} from '../redux/Actions';
 
 const categoriesData = require('../data/categories.json');
 
