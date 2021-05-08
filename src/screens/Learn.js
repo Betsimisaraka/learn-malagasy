@@ -64,7 +64,7 @@ const Learn = ({navigation, route}) => {
     const findRandom2 = phrase && phrase.find(phrase => phrase.id == random2);
     const findRandom3 = phrase && phrase.find(phrase => phrase.id == random3);
     const pickAnswers = [findAnswer, findRandom1, findRandom2, findRandom3];
-    console.log(pickAnswers);
+
     const sortedAnswer = pickAnswers.sort(() => {
       return 0.5 - Math.random();
     });

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({items, navigation, onPress}) {
+function List({items, navigation}) {
   const category = useSelector(state => state.categories);
   const answers = useSelector(state => state.answers);
   const isCorrect = useSelector(state => state.isCorrect);
