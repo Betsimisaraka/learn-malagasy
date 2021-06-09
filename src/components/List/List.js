@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 const Separator = () => <View style={styles.separator} />;
 
-function List({items, navigation}) {
+function List({items, navigation}) { // The list should be content-agnostic, e.g. everything that is displayed gets passed from the outside. If you do it this way, you will run into trouble when adding more functionality like validation
   const category = useSelector(state => state.categories);
   const answers = useSelector(state => state.answers);
 

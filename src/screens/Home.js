@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     marginRight: 23,
   },
 });
-
+// I like the cleanness of this
+// HomeButton implies only one button being passed when in reality it is more
 const Home = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>

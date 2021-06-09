@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     }
 })
 
-function ToolButton({ onPress, children }) {
+function ToolButton({ onPress, children }) { // children should be renamed in a more descriptive way 
   return <TouchableOpacity style={styles.container} onPress={onPress}>{children}</TouchableOpacity>;
 }
 

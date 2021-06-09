@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function LanguageSwitcherButton({onPress, buttonText, title}) {
+function LanguageSwitcherButton({onPress, buttonText, title}) { // buttonText and title are confusing, choose something like primary and secondary lanaguage
   return (
     <SafeAreaView>
       <TouchableOpacity style={styles.container} onPress={onPress}>

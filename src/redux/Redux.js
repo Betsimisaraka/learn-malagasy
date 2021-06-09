@@ -39,7 +39,7 @@ export const getAnswers = answer => ({
   payload: answer,
 });
 
-const categoryListReducer = (state = initialState, action) => {
+const categoryListReducer = (state = initialState, action) => { // not all of this is related to a categoryList
   switch (action.type) {
     case 'GET_CATEGORY_LIST':
       return {...state, categories: action.payload};
