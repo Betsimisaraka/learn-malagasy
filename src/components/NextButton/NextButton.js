@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#06B6D4',
     },
     disabledButtonContainer: {
-        width: 90,
+        width: 90, // try to merge styles instead of duplicating them
         height: 40,
         borderWidth: 1,
         borderColor: '#06B6D4',
@@ -64,7 +64,7 @@ function NextButton({ onPress, buttonText, disabled }) {
         textStyle = styles.disabledButtonText;
         containerStyle = styles.disabledButtonContainer;
     }
-
+// This can be way less cluttered by using an object to handle different cases
   return (
       <SafeAreaView style={styles.containerStyle}>
         <TouchableOpacity style={[containerStyle, styles.container]}

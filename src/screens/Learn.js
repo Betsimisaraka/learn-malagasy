@@ -53,7 +53,7 @@ const Learn = ({navigation, route}) => {
 
   function getRandomeAnswer(phrase, item) {
     console.log(item);
-
+    // This allows for duplicates and is the opposite of dry code
     const random = item[Math.floor(Math.random() * item.length)];
     const random1 = item[Math.floor(Math.random() * item.length)];
     const random2 = item[Math.floor(Math.random() * item.length)];
@@ -105,7 +105,7 @@ const Learn = ({navigation, route}) => {
       </View>
       <SectionHeading title="The phrase:" />
       <PhraseTextArea editable={false} phrase={phrase.question} />
-      <List items={answers && answers} />
+      <List items={answers && answers /* Why is this necessary? List will break when nothing is passed */ } />
     </SafeAreaView>
   );
 };

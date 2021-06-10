@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter',
     fontStyle: 'normal',
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: 16, // font size seems to be way smaller than icon
     lineHeight: 19,
   },
   buttonText: {
@@ -41,6 +41,13 @@ function ActionButton({onPress, buttonText}) {
   } else if (buttonText === 'Wrong') {
     style = styles.wrongButtonText;
   }
+  // Object notation is easier: 
+  // style = {
+  //   'Learn': styles.blueButtonText, 
+  //   'Pick': styles.blueButtonText,
+  //   ...
+  // }
+  // call it with style[buttonText]
 
   return (
     <SafeAreaView>

@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
 });
 
 function ListItem({title, onPress, buttonText}) {
+  // onPress should only be given to the parent element, ActionButton does not need an event
   return (
     <SafeAreaView>
       <TouchableOpacity style={styles.textContainer} onPress={onPress}>
